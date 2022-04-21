@@ -1,0 +1,32 @@
+.estilo {
+    background-color: lightgray;
+    border: 1px solid;
+    margin-left: 10px;
+    width: fit-content;
+    height: 25px;
+    padding: 5px;
+}
+
+.boton {
+    margin-left: 10px;
+    height: 30px;
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition-duration: 0.4s;
+}
+
+.boton:hover {
+    background-color: gray;
+    color: white;
+}
+
+.tabla {
+    border-collapse: collapse;
+    margin-left: 10px;
+    text-align: left;
+}
+
+tr:hover {
+    background-color: bisque;
+}
