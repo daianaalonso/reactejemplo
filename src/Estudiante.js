@@ -4,40 +4,44 @@ import "./Estudiante.css";
 export default class Estudiante extends Component {
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
+        this.listarEstudiantes = this.listarEstudiantes.bind(this);
         this.state = {
-            cursos: [{curso: 'Proyecto de Software', horas: '10'}],
-            lista: [{curso: 'Ingles', horas: '7'},
-                {curso: 'BD1', horas: '14'},
-                {curso: 'Matematica', horas: '21'},
-                {curso: 'Programacion orientada a objetos I', horas: '15'},
-                {curso: 'Programacion concurrente', horas: '10'},
-                {curso: 'Introduccion a los sistemas operativos', horas: '13'}]
+            estudiantes: [],
+            resultado: "",
         }
     }
 
-    handleClick() {
-        this.setState((state) => ({
-            cursos: [...state.cursos, state.lista[Math.floor(Math.random() * 6)]]
-        }));
+    listarEstudiantes() {
+        fetch("http://localhost:1234/estudiantes").then((resp) => resp.json()).then((json) => {
+            this.setState({
+                estudiantes: json.estudiantes,
+                resultado: json.result,
+            })
+        })
     }
 
     render() {
 
-        return (<div>
-            <p className="estilo"> Estudiante: {this.props.estu.nombre} {this.props.estu.apellido} </p>
-            <button className="boton" onClick={this.handleClick}>Inscribirme</button>
-            <table border="1" className="tabla">
-                <caption>Cursos:</caption>
-                <tbody>
-                <th>Curso</th>
-                <th>Cantidad de Hs</th>
-                {this.state.cursos.map((curso) => (<tr>
-                    <td>{curso.curso}</td>
-                    <td>{curso.horas} hs semanales</td>
-                </tr>))}
-                </tbody>
-            </table>
-        </div>)
+        return (
+            <div>
+                <button onClick={this.listarEstudiantes}>Listar estudiantes</button>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {this.state.estudiantes.map((e, index) => (
+                        <tr key={index}>
+                            <td>{e.nombre}</td>
+                            <td>{e.apellido}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+                <p>{this.state.resultado}</p>
+            </div>)
     }
 }

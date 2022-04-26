@@ -3,16 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Estudiante from "./Estudiante";
-
-let est = {
-    nombre: 'Daiana',
-    apellido: 'Alonso',
-}
+import Cursos from "./Cursos";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <Estudiante estu={est}/>
+        <Estudiante/><Cursos/>
     </React.StrictMode>
 );
 
