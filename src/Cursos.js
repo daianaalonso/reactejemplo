@@ -28,7 +28,7 @@ export default class Cursos extends Component {
             .then((resp) => resp.json())
             .then((json) => {
                 this.setState({
-                    cursos: json.estudiantes[0].cursos,
+                    cursos: json.estudiantes[0].listaCursos,
                     resultado: json.result,
                 })
             });
@@ -49,7 +49,7 @@ export default class Cursos extends Component {
                     <tbody>
                     {this.state.cursos.map((e, index) => (
                         <tr key={index}>
-                            <td>{e.curso}</td>
+                            <td>{e.nombre}</td>
                         </tr>
                     ))}
                     </tbody>

@@ -4,10 +4,12 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Estudiante from "./Estudiante";
 import Cursos from "./Cursos";
+import CrearEstudiante from "./CrearEstudiante";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
+        <CrearEstudiante/>
         <Estudiante/><Cursos/>
     </React.StrictMode>
 );
